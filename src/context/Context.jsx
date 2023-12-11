@@ -4,17 +4,42 @@ import { createContext, useState } from "react";
 
 
 
-export const context = createContext(null);
+export const PopUpContext = createContext(null);
 const Context = ({ children }) => {
+  const [showSignUp, setShowSignUp] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(false);
+ 
+  const handleSignInShow = (value) => {
+    console.log('life is beautiful')
+    if (value){
+        setShowSignIn(true);
+        setShowSignUp(false)
+    }
+    else{
+        setShowSignIn(false);
+    }
+  };
 
-  const data = 'life is beautiful'
+  const handleSignUpShow = (value) => {
+    if (value){
+        setShowSignUp(true)
+        setShowSignIn(false);
+    }
+    else{
+        setShowSignUp(false);
+    }
+  };
+  
 
   const contextData = {
-data,
+    showSignIn,
+    showSignUp,
+    handleSignInShow,
+    handleSignUpShow,
   };
 
   return (
-    <context.Provider value={contextData}>{children}</context.Provider>
+    <PopUpContext.Provider value={contextData}>{children}</PopUpContext.Provider>
   );
 };
 

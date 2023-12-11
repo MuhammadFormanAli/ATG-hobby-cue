@@ -7,12 +7,20 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Context from './context/Context';
+import Main from './layout/Main';
+import AddListing from './components/AddListing';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Main />
   },
+  {
+    path: "/add-listing",
+    element: <AddListing />
+  },
+
 ]);
 
 
